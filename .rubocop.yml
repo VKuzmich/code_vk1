@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+  - 'spec/**/*'
+  - 'bin/'
+  - '*.gemspec'
+  TargetRubyVersion: 2.6.3
+
+Metrics/LineLength:
+  Max: 120
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
