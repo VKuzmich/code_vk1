@@ -12,7 +12,7 @@ module GameStart
   end
 
   def check_numbers(secret, numbers)
-    minuses = (secret & numbers).map { |element| [secret.count(element), numbers.count(element)].min }.inject(:+)
+    minuses = (secret & numbers).map { |element| [secret.count(element), numbers.count(element)].min }.sum
     result = '-' * minuses
 
     numbers.each.with_index do |number, index|
@@ -22,11 +22,11 @@ module GameStart
     result
   end
 
-  def hint(secrets)
-    secrets.shuffle!.pop
+  def hint(secret)
+    secret.shuffle!.pop
   end
 
-  def calc_attempts_and_hints(difficulty)
+  def counts(difficulty)
     DIFFICULTY_LEVEL[difficulty]
   end
 end

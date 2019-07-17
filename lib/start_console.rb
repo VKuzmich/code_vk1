@@ -65,7 +65,7 @@ class StartConsole
       return no_stats_output unless File.exist?('seed.yaml')
 
       table = load.sort_by { |row| [row.hints_total, row.att_used] }
-      table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.att_total, row.hints_total]) }
+      table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
       table_output(table)
     end
 

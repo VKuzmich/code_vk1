@@ -5,13 +5,13 @@ require_relative '../dependencies'
 class Game
   include GameStart
 
-  attr_accessor :att_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
+  attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
 
   def initialize(name:, difficulty:)
     @name = name
     @difficulty = difficulty
-    @attempts = calc_attempts_and_hints(difficulty)[0]
-    @hints = calc_attempts_and_hints(difficulty)[1]
+    @attempts = counts(difficulty)[0]
+    @hints = counts(difficulty)[1]
     @win = false
     @secret = make_number
     @unused_hints = @secret.chars

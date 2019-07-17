@@ -24,10 +24,10 @@ class GameConsole
       end
     end
     game_over_output
-    game_summary
+    statistics
   end
 
-  def game_summary
+  def statistics
     summary_output(@game.secret)
     if @game.win
       win_output
@@ -39,13 +39,13 @@ class GameConsole
   end
 
   def save_results
-    att_total = calc_attempts_and_hints(@game.difficulty)[0]
-    hints_total = calc_attempts_and_hints(@game.difficulty)[1]
+    attempts_total = counts(@game.difficulty)[0]
+    hints_total = counts(@game.difficulty)[1]
     summary = {
         name: @game.name,
         difficulty: @game.difficulty,
-        att_total: att_total,
-        att_used: att_total - @game.attempts,
+        attempts_total: attempts_total,
+        att_used: attempts_total - @game.attempts,
         hints_total: hints_total,
         hints_used: hints_total - @game.hints
     }
