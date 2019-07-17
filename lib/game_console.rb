@@ -1,80 +1,59 @@
 # frozen_string_literal: true
 
 class GameConsole
+  include Validation
+  include Database
+  include GameStart
+  include Output
 
-  class << self
+  def initialize(name, difficulty)
+    @game = Game.new(name: name, difficulty: difficulty)
+  end
 
-    def welcome
-      welcome_output
-      run
-    end
+  def start
+    loop do
+      break if @game.attempts.zero? || @game.win
 
-    def run
-      loop do
-        menu_output
-        case gets.chomp
-        when 'start' then break registration
-        when 'rules' then rules
-        when 'stats' then stats
-        when 'exit' then break close
-        else wrong_input(__method__)
-        end
+      start_output(@game.attempts, @game.hints)
+      input = gets.chomp
+      case input
+      when 'exit' then break close
+      when 'hint' then next hint_output(@game.use_hint)
+      when /^[1-6]{4}/ then check_output(@game.check(input))
+      else next wrong_process_output unless guess_is_valid?(input)
       end
     end
+    game_over_output
+    game_summary
+  end
 
-    def registration
-      GameConsole.new(choose_name, choose_difficulty).start
-      welcome
+  def game_summary
+    summary_output(@game.secret)
+    if @game.win
+      win_output
+      save_output
+      save_results if gets.chomp == 'save'
+    else
+      lose_output
     end
+  end
 
-    def choose_name
-      loop do
-        name_output
-        name = gets.chomp
-        break close if name == 'exit'
-        break name if name_is_valid?(name)
+  def save_results
+    att_total = calc_attempts_and_hints(@game.difficulty)[0]
+    hints_total = calc_attempts_and_hints(@game.difficulty)[1]
+    summary = {
+        name: @game.name,
+        difficulty: @game.difficulty,
+        att_total: att_total,
+        att_used: att_total - @game.attempts,
+        hints_total: hints_total,
+        hints_used: hints_total - @game.hints
+    }
+    save(summary)
+  end
 
-        wrong_input(__method__)
-      end
-    end
-
-    def choose_difficulty
-      loop do
-        difficulty_output
-        case gets.chomp
-        when 'exit' then break close
-        when 'easy' then break I18n.t(:easy)
-        when 'medium' then break I18n.t(:medium)
-        when 'hell' then break I18n.t(:hell)
-        else wrong_input(__method__)
-        end
-      end
-    end
-
-    def rules
-      rules_output
-    end
-
-    def stats
-      return no_stats_output unless File.exist?('SEED.yaml')
-
-      table = load.sort_by { |row| [row.hints_total, row.att_used] }
-      table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.att_total, row.hints_total]) }
-      table_output(table)
-    end
-
-    def wrong_input(from)
-      wrong_input_hash = {
-          choose_difficulty: I18n.t(:wrong_difficulty),
-          choose_name: I18n.t(:wrong_name),
-          run: I18n.t(:wrong_run)
-      }
-      wrong_input_output(wrong_input_hash[from])
-    end
-
-    def close
-      goodbye_output
-      exit
-    end
+  def close
+    goodbye_output
+    exit
   end
 end

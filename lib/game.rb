@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/game_start'
+require_relative '../dependencies'
 
 class Game
   include GameStart
