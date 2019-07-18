@@ -64,7 +64,7 @@ class GameMenu
     def stats
       return no_stats_info unless File.exist?('seed.yaml')
 
-      table = load.sort_by { |row| [row.hints_total, row.att_used] }
+      table = load.sort_by { |row| [row.hints_total, row.attempts_used] }
       table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
       table_info(table)
     end

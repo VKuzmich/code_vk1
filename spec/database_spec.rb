@@ -12,7 +12,7 @@ RSpec.describe Database do
         name: 'Rspec',
         difficulty: 'Easy',
         attempts_total: 15,
-        att_used: 1,
+        attempts_used: 1,
         hints_total: 3,
         hints_used: 1
     }

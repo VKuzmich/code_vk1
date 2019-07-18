@@ -25,7 +25,7 @@ RSpec.describe GameConsole do
     end
 
     it 'shows a Game Over text' do
-      allow(console).to receive(:gstatistics)
+      allow(console).to receive(:statistics)
       console.instance_variable_get(:@game).instance_variable_set(:@attempts, 0)
       expect(STDOUT).to receive(:puts).with('Game Over')
     end

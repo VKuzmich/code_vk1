@@ -11,7 +11,7 @@ RSpec.describe TableData do
         name: test,
         difficulty: test,
         attempts_total: test,
-        att_used: test,
+        attempts_used: test,
         hints_total: test,
         hints_used: test
     )
@@ -19,7 +19,7 @@ RSpec.describe TableData do
                                   name: test,
                                   difficulty: test,
                                   attempts_total: test,
-                                  att_used: test,
+                                  attempts_used: test,
                                   hints_total: test,
                                   hints_used: test))
   end

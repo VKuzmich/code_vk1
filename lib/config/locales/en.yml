@@ -33,5 +33,5 @@ en:
   secret: "The secret code was %{secret}"
   save: "Print 'save' if you want to save your result: "
   game_over: "Game Over"
-  stats: "Player %{name} played with difficulty level %{difficulty} (%{attempts_total} attempts, %{hints_total} hints) and won with %{att_used} attempts and %{hints_used} hints used."
+  stats: "Player %{name} played with difficulty level %{difficulty} (%{attempts_total} attempts, %{hints_total} hints) and won with %{attempts_used} attempts and %{hints_used} hints used."
   no_stats: "Sorry, you have not any saves yet."

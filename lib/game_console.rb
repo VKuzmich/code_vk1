@@ -45,7 +45,7 @@ class GameConsole
         name: @game.name,
         difficulty: @game.difficulty,
         attempts_total: attempts_total,
-        att_used: attempts_total - @game.attempts,
+        attempts_used: attempts_total - @game.attempts,
         hints_total: hints_total,
         hints_used: hints_total - @game.hints
     }
