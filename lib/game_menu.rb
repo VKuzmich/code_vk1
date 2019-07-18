@@ -2,7 +2,7 @@
 
 require_relative '../dependencies'
 
-class StartConsole
+class GameMenu
 
   class << self
     include Validation
