@@ -8,16 +8,16 @@ class StartConsole
     include Validation
     include Database
     include GameStart
-    include Output
+    include Info
 
     def welcome
-      welcome_output
+      welcome_info
       run
     end
 
     def run
       loop do
-        menu_output
+        menu_info
         case gets.chomp
         when 'start' then break registration
         when 'rules' then rules
@@ -35,7 +35,7 @@ class StartConsole
 
     def choose_name
       loop do
-        name_output
+        name_info
         name = gets.chomp
         break close if name == 'exit'
         break name if name_is_valid?(name)
@@ -46,7 +46,7 @@ class StartConsole
 
     def choose_difficulty
       loop do
-        difficulty_output
+        difficulty_info
         case gets.chomp
         when 'exit' then break close
         when 'easy' then break I18n.t(:easy)
@@ -58,15 +58,15 @@ class StartConsole
     end
 
     def rules
-      rules_output
+      rules_info
     end
 
     def stats
-      return no_stats_output unless File.exist?('seed.yaml')
+      return no_stats_info unless File.exist?('seed.yaml')
 
       table = load.sort_by { |row| [row.hints_total, row.att_used] }
       table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
-      table_output(table)
+      table_info(table)
     end
 
     def wrong_input(from)
@@ -75,11 +75,11 @@ class StartConsole
           choose_name: I18n.t(:wrong_name),
           run: I18n.t(:wrong_run)
       }
-      wrong_input_output(wrong_input_hash[from])
+      wrong_input_info(wrong_input_hash[from])
     end
 
     def close
-      goodbye_output
+      goodbye_info
       exit
     end
   end

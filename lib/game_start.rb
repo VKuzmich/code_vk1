@@ -26,7 +26,7 @@ module GameStart
     secret.shuffle!.pop
   end
 
-  def counts(difficulty)
+  def calc_counts(difficulty)
     DIFFICULTY_LEVEL[difficulty]
   end
 end

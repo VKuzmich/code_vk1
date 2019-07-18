@@ -27,3 +27,45 @@
   att_used: 5
   hints_total: 3
   hints_used: 2
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  att_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  att_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  att_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  att_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  att_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  att_used: 1
+  hints_total: 3
+  hints_used: 1

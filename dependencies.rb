@@ -5,7 +5,7 @@ require 'codebreaker_vk'
 require 'pry'
 
 require_relative 'lib/config/i18n'
-require_relative './lib/game_output'
+require_relative './lib/game_info'
 require_relative './lib/validation'
 require_relative './lib/game_start'
 require_relative './lib/database'

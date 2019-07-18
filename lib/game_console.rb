@@ -4,7 +4,7 @@ class GameConsole
   include Validation
   include Database
   include GameStart
-  include Output
+  include Info
 
   def initialize(name, difficulty)
     @game = Game.new(name: name, difficulty: difficulty)
@@ -14,33 +14,33 @@ class GameConsole
     loop do
       break if @game.attempts.zero? || @game.win
 
-      start_output(@game.attempts, @game.hints)
+      start_info(@game.attempts, @game.hints)
       input = gets.chomp
       case input
       when 'exit' then break close
-      when 'hint' then next hint_output(@game.use_hint)
-      when /^[1-6]{4}/ then check_output(@game.check(input))
-      else next wrong_process_output unless guess_is_valid?(input)
+      when 'hint' then next hint_info(@game.use_hint)
+      when /^[1-6]{4}/ then check_info(@game.check(input))
+      else next wrong_process_info unless guess_is_valid?(input)
       end
     end
-    game_over_output
+    game_over_info
     statistics
   end
 
   def statistics
-    summary_output(@game.secret)
+    summary_info(@game.secret)
     if @game.win
-      win_output
-      save_output
+      win_info
+      save_info
       save_results if gets.chomp == 'save'
     else
-      lose_output
+      lose_info
     end
   end
 
   def save_results
-    attempts_total = counts(@game.difficulty)[0]
-    hints_total = counts(@game.difficulty)[1]
+    attempts_total = calc_counts(@game.difficulty)[0]
+    hints_total = calc_counts(@game.difficulty)[1]
     summary = {
         name: @game.name,
         difficulty: @game.difficulty,
@@ -53,7 +53,7 @@ class GameConsole
   end
 
   def close
-    goodbye_output
+    goodbye_info
     exit
   end
 end
