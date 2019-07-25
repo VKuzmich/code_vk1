@@ -132,3 +132,122 @@
   attempts_used: 1
   hints_total: 3
   hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: wqwwq
+  difficulty: Easy
+  attempts_total: 15
+  attempts_used: 3
+  hints_total: 3
+  hints_used: 2

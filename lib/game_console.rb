@@ -42,12 +42,12 @@ class GameConsole
     attempts_total = calc_counts(@game.difficulty)[0]
     hints_total = calc_counts(@game.difficulty)[1]
     summary = {
-        name: @game.name,
-        difficulty: @game.difficulty,
-        attempts_total: attempts_total,
-        attempts_used: attempts_total - @game.attempts,
-        hints_total: hints_total,
-        hints_used: hints_total - @game.hints
+      name: @game.name,
+      difficulty: @game.difficulty,
+      attempts_total: attempts_total,
+      attempts_used: attempts_total - @game.attempts,
+      hints_total: hints_total,
+      hints_used: hints_total - @game.hints
     }
     save(summary)
   end

@@ -3,7 +3,6 @@
 require_relative '../dependencies'
 
 class GameMenu
-
   class << self
     include Validation
     include Database
@@ -71,9 +70,9 @@ class GameMenu
 
     def wrong_input(from)
       wrong_input_hash = {
-          choose_difficulty: I18n.t(:wrong_difficulty),
-          choose_name: I18n.t(:wrong_name),
-          run: I18n.t(:wrong_run)
+        choose_difficulty: I18n.t(:wrong_difficulty),
+        choose_name: I18n.t(:wrong_name),
+        run: I18n.t(:wrong_run)
       }
       wrong_input_info(wrong_input_hash[from])
     end

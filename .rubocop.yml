@@ -1,12 +1,24 @@
 AllCops:
   Exclude:
   - 'spec/**/*'
-  - 'bin/'
+  - 'bin/*'
   - '*.gemspec'
-  TargetRubyVersion: 2.6.3
+TargetRubyVersion: 2.6.3
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ParameterLists:
+  Max: 7
 
 FrozenStringLiteralComment:
   Enabled: false
