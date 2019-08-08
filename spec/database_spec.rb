@@ -1,5 +1,3 @@
-
-
 require_relative 'spec_helper'
 require_relative '../dependencies'
 
@@ -10,7 +8,7 @@ RSpec.describe Database do
   let(:summary) do
     {
         name: 'Rspec',
-        difficulty: 'Easy',
+        difficulty: 'easy',
         attempts_total: 15,
         attempts_used: 1,
         hints_total: 3,
