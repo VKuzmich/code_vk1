@@ -8,6 +8,7 @@ class Game
   attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
 
   def initialize(name:, difficulty:)
+    # binding.pry
     @name = name
     @difficulty = difficulty
     @attempts = GameStart::DIFFICULTY_LEVEL[difficulty][:attempts]

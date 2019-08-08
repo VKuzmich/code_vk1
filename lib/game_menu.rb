@@ -48,9 +48,9 @@ class GameMenu
         difficulty_info
         case gets.chomp
         when 'exit' then break close
-        when 'easy' then break I18n.t(:easy)
-        when 'medium' then break I18n.t(:medium)
-        when 'hell' then break I18n.t(:hell)
+        when 'easy' then break :easy
+        when 'medium' then break :medium
+        when 'hell' then break :hell
         else wrong_input(__method__)
         end
       end
