@@ -2,9 +2,9 @@
 
 module GameStart
   DIFFICULTY_LEVEL = {
-    I18n.t(:easy) => [15, 3],
-    I18n.t(:medium) => [10, 2],
-    I18n.t(:hell) => [5, 1]
+    :easy => [15, 3],
+    :medium => [10, 2],
+    :hell => [5, 1]
   }.freeze
 
   def make_number(chars = 4, numbers = 6)

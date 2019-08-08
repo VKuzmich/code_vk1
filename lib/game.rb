@@ -10,8 +10,8 @@ class Game
   def initialize(name:, difficulty:)
     @name = name
     @difficulty = difficulty
-    @attempts = calc_counts(difficulty)[0]
-    @hints = calc_counts(difficulty)[1]
+    @attempts = GameStart::DIFFICULTY_LEVEL[difficulty][:attempts]
+    @hints = GameStart::DIFFICULTY_LEVEL[difficulty][:hints]
     @win = false
     @secret = make_number
     @unused_hints = @secret.chars
