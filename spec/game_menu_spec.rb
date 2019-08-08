@@ -27,22 +27,22 @@ RSpec.describe GameMenu do
     end
 
     it 'calls registration method' do
-      allow(described_class).to receive(:gets).and_return("start\n")
+      allow(described_class).to receive(:gets).and_return('start')
       expect(described_class).to receive(:registration)
     end
 
     it 'calls rules method' do
-      allow(described_class).to receive(:gets).and_return("rules\n")
+      allow(described_class).to receive(:gets).and_return('rules')
       expect(described_class).to receive(:rules)
     end
 
     it 'calls stats method' do
-      allow(described_class).to receive(:gets).and_return("stats\n")
+      allow(described_class).to receive(:gets).and_return('stats')
       expect(described_class).to receive(:stats)
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return("exit\n")
+      allow(described_class).to receive(:gets).and_return('exit')
       expect(described_class).to receive(:close)
     end
 
@@ -107,9 +107,9 @@ RSpec.describe GameMenu do
 
     it 'returns a correct difficulty level' do
       {
-          'easy' => I18n.t(:easy),
-          'medium' => I18n.t(:medium),
-          'hell' => I18n.t(:hell)
+          'easy' => :easy,
+          'medium' => :medium,
+          'hell' => :hell
       }.each_pair do |input, output|
         allow(described_class).to receive(:gets).and_return(input)
         expect(described_class.choose_difficulty).to eq(output)

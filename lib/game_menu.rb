@@ -8,6 +8,11 @@ class GameMenu
     include Database
     include GameStart
 
+    START = 'start'
+    RULES = 'rules'
+    STATISTICS = 'stats'
+    EXIT = 'exit'
+
     def welcome
       puts I18n.t(:greeting)
       run
@@ -17,10 +22,10 @@ class GameMenu
       loop do
         puts I18n.t(:menu)
         case gets.chomp
-        when 'start' then break registration
-        when 'rules' then rules
-        when 'stats' then stats
-        when 'exit' then break close
+        when START then break registration
+        when RULES then rules
+        when STATISTICS then stats
+        when EXIT then break close
         else wrong_input(__method__)
         end
       end

@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 require_relative '../dependencies'
 
 RSpec.describe GameConsole do
-  let(:console) { described_class.new('Rspec', 'Easy') }
+  let(:console) { described_class.new('Rspec', 'easy') }
 
   before do
     allow(STDOUT).to receive(:puts).with(anything)
