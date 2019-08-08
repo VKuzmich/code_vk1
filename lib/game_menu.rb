@@ -7,16 +7,15 @@ class GameMenu
     include Validation
     include Database
     include GameStart
-    include Info
 
     def welcome
-      welcome_info
+      puts I18n.t(:greeting)
       run
     end
 
     def run
       loop do
-        menu_info
+        puts I18n.t(:menu)
         case gets.chomp
         when 'start' then break registration
         when 'rules' then rules
@@ -34,7 +33,7 @@ class GameMenu
 
     def choose_name
       loop do
-        name_info
+        puts I18n.t(:choose_name)
         name = gets.chomp
         break close if name == 'exit'
         break name if name_is_valid?(name)
@@ -45,7 +44,7 @@ class GameMenu
 
     def choose_difficulty
       loop do
-        difficulty_info
+        puts I18n.t(:choose_difficulty)
         case gets.chomp
         when 'exit' then break close
         when 'easy' then break :easy
@@ -57,15 +56,15 @@ class GameMenu
     end
 
     def rules
-      rules_info
+      puts I18n.t(:rules)
     end
 
     def stats
-      return no_stats_info unless File.exist?('seed.yaml')
+      return puts I18n.t(:no_stats) unless File.exist?('seed.yaml')
 
       table = load.sort_by { |row| [row.hints_total, row.attempts_used] }
       table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
-      table_info(table)
+      puts table
     end
 
     def wrong_input(from)
@@ -74,11 +73,11 @@ class GameMenu
         choose_name: I18n.t(:wrong_name),
         run: I18n.t(:wrong_run)
       }
-      wrong_input_info(wrong_input_hash[from])
+      puts wrong_input_hash[from]
     end
 
     def close
-      goodbye_info
+      puts I18n.t(:goodbye)
       exit
     end
   end

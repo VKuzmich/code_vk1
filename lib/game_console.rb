@@ -4,7 +4,6 @@ class GameConsole
   include Validation
   include Database
   include GameStart
-  include Info
 
   def initialize(name, difficulty)
     @game = Game.new(name: name, difficulty: difficulty)
@@ -20,27 +19,43 @@ class GameConsole
       when 'exit' then break close
       when 'hint' then next hint_info(@game.use_hint)
       when /^[1-6]{4}/ then check_info(@game.check(input))
-      else next wrong_process_info unless guess_is_valid?(input)
+      else next puts I18n.t(:wrong_process) unless guess_is_valid?(input)
       end
     end
-    game_over_info
+    puts I18n.t(:game_over)
     statistics
+  end
+
+  def check_info(check)
+    puts check
+  end
+
+  def hint_info(use_hint)
+    puts use_hint
+  end
+
+  def start_info(attempts, hints)
+    puts I18n.t(:game_process, attempts: attempts, hints: hints)
   end
 
   def statistics
     summary_info(@game.secret)
     if @game.win
-      win_info
-      save_info
+      puts I18n.t(:win)
+      print I18n.t(:save)
       save_results if gets.chomp == 'save'
     else
-      lose_info
+      puts I18n.t(:lose)
     end
   end
 
+  def summary_info(secret)
+    puts I18n.t(:secret, secret: secret)
+  end
+
   def save_results
-    attempts_total = calc_counts(@game.difficulty)[0]
-    hints_total = calc_counts(@game.difficulty)[1]
+    attempts_total = calc_counts(@game.difficulty)[:attempts]
+    hints_total = calc_counts(@game.difficulty)[:hints]
     summary = {
       name: @game.name,
       difficulty: @game.difficulty,
@@ -53,7 +68,7 @@ class GameConsole
   end
 
   def close
-    goodbye_info
+    puts I18n.t(:goodbye)
     exit
   end
 end

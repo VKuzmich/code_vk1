@@ -272,3 +272,24 @@
   attempts_used: 8
   hints_total: 3
   hints_used: 0
+- !ruby/object:TableData
+  name: qwqwq
+  difficulty: :easy
+  attempts_total: 15
+  attempts_used: 6
+  hints_total: 2
+  hints_used: 2
+- !ruby/object:TableData
+  name: wewe
+  difficulty: :easy
+  attempts_total: 15
+  attempts_used: 9
+  hints_total: 2
+  hints_used: 0
+- !ruby/object:TableData
+  name: qwqwqw
+  difficulty: :easy
+  attempts_total: 15
+  attempts_used: 7
+  hints_total: 2
+  hints_used: 2
