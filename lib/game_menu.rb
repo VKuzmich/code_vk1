@@ -26,7 +26,7 @@ class GameMenu
         when RULES then rules
         when STATISTICS then stats
         when EXIT then break close
-        else wrong_input(__method__)
+        else puts I18n.t(:wrong_run)
         end
       end
     end
@@ -43,7 +43,7 @@ class GameMenu
         break close if name == 'exit'
         break name if name_is_valid?(name)
 
-        wrong_input(__method__)
+        puts I18n.t(:wrong_name)
       end
     end
 
@@ -55,7 +55,7 @@ class GameMenu
         when 'easy' then break :easy
         when 'medium' then break :medium
         when 'hell' then break :hell
-        else wrong_input(__method__)
+        else puts I18n.t(:wrong_difficulty)
         end
       end
     end
@@ -70,15 +70,6 @@ class GameMenu
       table = load.sort_by { |row| [row.hints_total, row.attempts_used] }
       table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
       puts table
-    end
-
-    def wrong_input(from)
-      wrong_input_hash = {
-        choose_difficulty: I18n.t(:wrong_difficulty),
-        choose_name: I18n.t(:wrong_name),
-        run: I18n.t(:wrong_run)
-      }
-      puts wrong_input_hash[from]
     end
 
     def close

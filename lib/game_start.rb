@@ -2,9 +2,9 @@
 
 module GameStart
   DIFFICULTY_LEVEL = {
-      easy: { attempts: 15, hints: 2 },
-      medium: { attempts: 10, hints: 2 },
-      hell: { attempts: 5, hints: 1 }
+    easy: { attempts: 15, hints: 2 },
+    medium: { attempts: 10, hints: 2 },
+    hell: { attempts: 5, hints: 1 }
   }.freeze
 
   NOT_YET = '-'
