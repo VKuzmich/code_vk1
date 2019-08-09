@@ -40,7 +40,7 @@ class GameMenu
       loop do
         puts I18n.t(:choose_name)
         name = gets.chomp
-        break close if name == 'exit'
+        break close if name == EXIT
         break name if name_is_valid?(name)
 
         puts I18n.t(:wrong_name)
@@ -51,7 +51,7 @@ class GameMenu
       loop do
         puts I18n.t(:choose_difficulty)
         case gets.chomp
-        when 'exit' then break close
+        when EXIT then break close
         when 'easy' then break :easy
         when 'medium' then break :medium
         when 'hell' then break :hell

@@ -4,6 +4,7 @@ require_relative '../dependencies'
 
 class Game
   include GameStart
+  include Validation
 
   attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
 
@@ -20,7 +21,7 @@ class Game
   def check(number)
     @attempts -= 1
     result = check_numbers(@secret.chars, number.chars)
-    @win = true if result == '++++'
+    @win = true if result == GameStart::GOT_IT * Validation::NUMBERS
     result
   end
 
