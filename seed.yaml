@@ -370,3 +370,17 @@
   attempts_used: 1
   hints_total: 3
   hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
+- !ruby/object:TableData
+  name: Rspec
+  difficulty: easy
+  attempts_total: 15
+  attempts_used: 1
+  hints_total: 3
+  hints_used: 1
