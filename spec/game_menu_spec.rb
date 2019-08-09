@@ -27,22 +27,22 @@ RSpec.describe GameMenu do
     end
 
     it 'calls registration method' do
-      allow(described_class).to receive(:gets).and_return('start')
+      allow(described_class).to receive(:gets).and_return("start\n")
       expect(described_class).to receive(:registration)
     end
 
     it 'calls rules method' do
-      allow(described_class).to receive(:gets).and_return('rules')
+      allow(described_class).to receive(:gets).and_return("rules\n")
       expect(described_class).to receive(:rules)
     end
 
     it 'calls stats method' do
-      allow(described_class).to receive(:gets).and_return('stats')
+      allow(described_class).to receive(:gets).and_return("stats\n")
       expect(described_class).to receive(:stats)
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return('exit')
+      allow(described_class).to receive(:gets).and_return("exit\n")
       expect(described_class).to receive(:close)
     end
 

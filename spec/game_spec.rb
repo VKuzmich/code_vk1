@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 require_relative '../dependencies'
 
 RSpec.describe Game do
-  subject(:game) { described_class.new(name: 'Rspec', difficulty: 'easy') }
+  subject(:game) { described_class.new(name: 'Rspec', difficulty: :easy) }
 
   describe '.check' do
     it 'returns ++++' do

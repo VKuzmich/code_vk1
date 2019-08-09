@@ -43,22 +43,22 @@ RSpec.describe GameStart do
 
   describe '.calc_counts' do
     it 'returns a number of attempts depends on difficulty' do
-      test_data = [
-          ['easy', 15],
-          ['medium', 10],
-          ['hell', 5]
-      ]
+      test_data = {
+          easy: 15 ,
+          medium: 10,
+          hell: 5
+      }
 
-      test_data.each { |test_case| expect(game_class.calc_counts(test_case[0])[0]).to eq(test_case[1]) }
+      test_data.each { |test_case| expect(game_class.calc_counts(test_case[0])[:attempts]).to eq(test_case[1]) }
     end
 
     it 'returns a number of hints depends on difficulty' do
-      test_data = [
-          ['easy', 3],
-          ['medium', 2],
-          ['hell', 1]
-      ]
-      test_data.map { |test_case| expect(game_class.calc_counts(test_case[0])[1]).to eq(test_case[1]) }
+      test_data = {
+          easy: 3,
+          medium: 2,
+          hell: 1
+      }
+      test_data.map { |test_case| expect(game_class.calc_counts(test_case[0])[:hints]).to eq(test_case[1]) }
     end
   end
 end
