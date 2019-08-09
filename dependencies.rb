@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'i18n'
-require 'codebreaker_vk'
 require 'pry'
 
 require_relative 'lib/config/i18n'
