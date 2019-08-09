@@ -18,6 +18,10 @@ RSpec.describe GameMenu do
   end
 
   describe '.run' do
+    let(:start) {"start\n"}
+    let(:rules) {"rules\n"}
+    let(:stats) {"stats\n"}
+    let(:exit) {"exit\n"}
     before do
       allow(described_class).to receive(:loop).and_yield
     end
@@ -27,22 +31,22 @@ RSpec.describe GameMenu do
     end
 
     it 'calls registration method' do
-      allow(described_class).to receive(:gets).and_return("start\n")
+      allow(described_class).to receive(:gets).and_return(start)
       expect(described_class).to receive(:registration)
     end
 
     it 'calls rules method' do
-      allow(described_class).to receive(:gets).and_return("rules\n")
+      allow(described_class).to receive(:gets).and_return(rules)
       expect(described_class).to receive(:rules)
     end
 
     it 'calls stats method' do
-      allow(described_class).to receive(:gets).and_return("stats\n")
+      allow(described_class).to receive(:gets).and_return(stats)
       expect(described_class).to receive(:stats)
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return("exit\n")
+      allow(described_class).to receive(:gets).and_return(exit)
       expect(described_class).to receive(:close)
     end
 
