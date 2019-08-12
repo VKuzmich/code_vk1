@@ -59,8 +59,8 @@ class GameConsole
   end
 
   def save_results
-    attempts_total = calc_counts(@game.difficulty)[:attempts]
-    hints_total = calc_counts(@game.difficulty)[:hints]
+    attempts_total = DIFFICULTY_LEVEL[@game.difficulty][:attempts]
+    hints_total = DIFFICULTY_LEVEL[@game.difficulty][:hints]
     summary = {
       name: @game.name,
       difficulty: @game.difficulty,

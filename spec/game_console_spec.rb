@@ -29,7 +29,7 @@ RSpec.describe GameConsole do
     end
 
     it 'calls a use_hint method from Game class' do
-      allow(game_console).to receive(:gets).and_return(GameConsole::HINT)
+      allow(game_console).to receive(:gets).and_return("hint\n")
       expect(game_console.instance_variable_get(:@game)).to receive(:use_hint)
     end
 
@@ -74,13 +74,13 @@ RSpec.describe GameConsole do
 
     it 'calls save_results method' do
       game_console.instance_variable_get(:@game).instance_variable_set(:@win, true)
-      allow(game_console).to receive(:gets).and_return(GameConsole::SAVE)
+      allow(game_console).to receive(:gets).and_return("save\n")
       expect(game_console).to receive(:save_results)
     end
   end
 
   describe '.save_results' do
-    it 'calls a save method from DataUtils' do
+    it 'calls a save method from DataBase' do
       expect(game_console).to receive(:save)
       game_console.save_results
     end

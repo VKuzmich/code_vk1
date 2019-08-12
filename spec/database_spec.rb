@@ -8,7 +8,7 @@ RSpec.describe Database do
   let(:summary) do
     {
         name: 'Rspec',
-        difficulty: GameStart::DIFFICULTY_LEVEL.keys[0],
+        difficulty: Game::DIFFICULTY_LEVEL.keys[0],
         attempts_total: 15,
         attempts_used: 1,
         hints_total: 3,

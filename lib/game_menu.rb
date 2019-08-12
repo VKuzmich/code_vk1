@@ -5,7 +5,7 @@ require_relative '../dependencies'
 class GameMenu
   extend Validation
   extend Database
-  extend GameStart
+  # extend GameStart
 
   START = 'start'
   RULES = 'rules'
@@ -52,7 +52,7 @@ class GameMenu
         puts I18n.t(:choose_difficulty)
         input = gets.chomp
         break close if input == EXIT
-        break input.to_sym if GameStart::DIFFICULTY_LEVEL.keys.include? input.to_sym
+        break input.to_sym if Game::DIFFICULTY_LEVEL.keys.include? input.to_sym
         puts I18n.t(:wrong_difficulty)
       end
     end
@@ -65,7 +65,7 @@ class GameMenu
       return puts I18n.t(:no_stats) unless File.exist?('seed.yaml')
 
       table = load.sort_by { |row| [row.hints_total, row.attempts_used] }
-      table.map { |row| row.difficulty = DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
+      table.map { |row| row.difficulty = Game::DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
       puts table
     end
 

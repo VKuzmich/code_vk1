@@ -94,7 +94,7 @@ RSpec.describe GameMenu do
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return("exit\n")
+      allow(described_class).to receive(:gets).and_return(GameMenu::EXIT)
       expect(described_class).to receive(:close)
       described_class.choose_difficulty
     end
@@ -107,7 +107,7 @@ RSpec.describe GameMenu do
     end
 
     it 'returns a correct difficulty level' do
-      GameStart::DIFFICULTY_LEVEL.keys.each do |key|
+      Game::DIFFICULTY_LEVEL.keys.each do |key|
         allow(described_class).to receive(:gets).and_return(key.to_s)
         expect(described_class.choose_difficulty).to eq(key)
       end

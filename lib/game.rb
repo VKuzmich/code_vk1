@@ -7,15 +7,23 @@ class Game
   include Validation
 
   attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
-
+  DIFFICULTY_LEVEL = {
+      easy: { attempts: 15, hints: 3 },
+      medium: { attempts: 10, hints: 2 },
+      hell: { attempts: 5, hints: 1 }
+  }.freeze
   def initialize(name:, difficulty:)
     @name = name
     @difficulty = difficulty
-    @attempts = GameStart::DIFFICULTY_LEVEL[difficulty][:attempts]
-    @hints = GameStart::DIFFICULTY_LEVEL[difficulty][:hints]
+    @attempts = DIFFICULTY_LEVEL[difficulty][:attempts]
+    @hints = DIFFICULTY_LEVEL[difficulty][:hints]
     @win = false
     @secret = make_number
     @unused_hints = @secret.chars
+  end
+
+  def calc_counts(difficulty)
+    DIFFICULTY_LEVEL[difficulty]
   end
 
   def check(number)
