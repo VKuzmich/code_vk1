@@ -18,10 +18,7 @@ RSpec.describe GameMenu do
   end
 
   describe '.run' do
-    let(:start) {"start\n"}
-    let(:rules) {"rules\n"}
-    let(:stats) {"stats\n"}
-    let(:exit) {"exit\n"}
+
     before do
       allow(described_class).to receive(:loop).and_yield
     end
@@ -31,22 +28,22 @@ RSpec.describe GameMenu do
     end
 
     it 'calls registration method' do
-      allow(described_class).to receive(:gets).and_return(start)
+      allow(described_class).to receive(:gets).and_return(GameMenu::START)
       expect(described_class).to receive(:registration)
     end
 
     it 'calls rules method' do
-      allow(described_class).to receive(:gets).and_return(rules)
+      allow(described_class).to receive(:gets).and_return(GameMenu::RULES)
       expect(described_class).to receive(:rules)
     end
 
     it 'calls stats method' do
-      allow(described_class).to receive(:gets).and_return(stats)
+      allow(described_class).to receive(:gets).and_return(GameMenu::STATISTICS)
       expect(described_class).to receive(:stats)
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return(exit)
+      allow(described_class).to receive(:gets).and_return(GameMenu::EXIT)
       expect(described_class).to receive(:close)
     end
 
@@ -110,13 +107,9 @@ RSpec.describe GameMenu do
     end
 
     it 'returns a correct difficulty level' do
-      {
-          'easy' => :easy,
-          'medium' => :medium,
-          'hell' => :hell
-      }.each_pair do |input, output|
-        allow(described_class).to receive(:gets).and_return(input)
-        expect(described_class.choose_difficulty).to eq(output)
+      GameStart::DIFFICULTY_LEVEL.keys.each do |key|
+        allow(described_class).to receive(:gets).and_return(key.to_s)
+        expect(described_class.choose_difficulty).to eq(key)
       end
     end
   end
@@ -127,7 +120,7 @@ RSpec.describe GameMenu do
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return("exit\n")
+      allow(described_class).to receive(:gets).and_return(GameMenu::EXIT)
       expect(described_class).to receive(:close)
       described_class.choose_name
     end

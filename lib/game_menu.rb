@@ -3,16 +3,16 @@
 require_relative '../dependencies'
 
 class GameMenu
+  extend Validation
+  extend Database
+  extend GameStart
+
+  START = 'start'
+  RULES = 'rules'
+  STATISTICS = 'stats'
+  EXIT = 'exit'
+
   class << self
-    include Validation
-    include Database
-    include GameStart
-
-    START = 'start'
-    RULES = 'rules'
-    STATISTICS = 'stats'
-    EXIT = 'exit'
-
     def welcome
       puts I18n.t(:greeting)
       run
@@ -50,13 +50,10 @@ class GameMenu
     def choose_difficulty
       loop do
         puts I18n.t(:choose_difficulty)
-        case gets.chomp
-        when EXIT then break close
-        when 'easy' then break :easy
-        when 'medium' then break :medium
-        when 'hell' then break :hell
-        else puts I18n.t(:wrong_difficulty)
-        end
+        input = gets.chomp
+        break close if input == EXIT
+        break input.to_sym if GameStart::DIFFICULTY_LEVEL.keys.include? input.to_sym
+        puts I18n.t(:wrong_difficulty)
       end
     end
 
