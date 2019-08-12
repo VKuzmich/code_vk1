@@ -7,6 +7,9 @@ class GameConsole
   include Database
   include GameStart
 
+  HINT = 'hint'
+  SAVE = 'save'
+
   def initialize(name, difficulty)
     @game = Game.new(name: name, difficulty: difficulty)
   end
@@ -19,7 +22,7 @@ class GameConsole
       input = gets.chomp
       case input
       when GameMenu::EXIT then break close
-      when 'hint' then next hint_info(@game.use_hint)
+      when HINT then next hint_info(@game.use_hint)
       when /^[1-6]{4}/ then check_info(@game.check(input))
       else next puts I18n.t(:wrong_process) unless guess_is_valid?(input)
       end
@@ -45,7 +48,7 @@ class GameConsole
     if @game.win
       puts I18n.t(:win)
       print I18n.t(:save)
-      save_results if gets.chomp == 'save'
+      save_results if gets.chomp == SAVE
     else
       puts I18n.t(:lose)
     end
