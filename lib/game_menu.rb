@@ -65,7 +65,7 @@ class GameMenu
       return puts I18n.t(:no_stats) unless File.exist?('seed.yaml')
 
       table = load.sort_by { |row| [row.hints_total, row.attempts_used] }
-      table.map { |row| row.difficulty = Game::DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
+      table.each { |row| row.difficulty = Game::DIFFICULTY_LEVEL.key([row.attempts_total, row.hints_total]) }
       puts table
     end
 

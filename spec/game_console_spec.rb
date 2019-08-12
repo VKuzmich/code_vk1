@@ -18,18 +18,18 @@ RSpec.describe GameConsole do
     end
 
     it 'calls close method' do
-      allow(game_console).to receive(:gets).and_return("exit\n")
+      allow(game_console).to receive(:gets).and_return(GameMenu::EXIT)
       expect(game_console).to receive(:close)
     end
 
     it 'shows a Game Over text' do
       allow(game_console).to receive(:statistics)
       game_console.instance_variable_get(:@game).instance_variable_set(:@attempts, 0)
-      expect(STDOUT).to receive(:puts).with('Game Over')
+      expect(STDOUT).to receive(:puts).with(I18n.t(:game_over))
     end
 
     it 'calls a use_hint method from Game class' do
-      allow(game_console).to receive(:gets).and_return("hint\n")
+      allow(game_console).to receive(:gets).and_return(GameConsole::HINT)
       expect(game_console.instance_variable_get(:@game)).to receive(:use_hint)
     end
 
@@ -74,7 +74,7 @@ RSpec.describe GameConsole do
 
     it 'calls save_results method' do
       game_console.instance_variable_get(:@game).instance_variable_set(:@win, true)
-      allow(game_console).to receive(:gets).and_return("save\n")
+      allow(game_console).to receive(:gets).and_return(GameConsole::SAVE)
       expect(game_console).to receive(:save_results)
     end
   end

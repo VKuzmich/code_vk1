@@ -6,12 +6,15 @@ class Game
   # include GameStart
   include Validation
 
-  attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
+  NOT_YET = '-'
+  GOT_IT = '+'
   DIFFICULTY_LEVEL = {
       easy: { attempts: 15, hints: 3 },
       medium: { attempts: 10, hints: 2 },
       hell: { attempts: 5, hints: 1 }
   }.freeze
+
+  attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
 
   def initialize(name:, difficulty:)
     @name = name
@@ -23,8 +26,6 @@ class Game
     @unused_hints = @secret.chars
   end
 
-  NOT_YET = '-'
-  GOT_IT = '+'
 
   def make_number(chars = 4, numbers = 6)
     (1..chars).map { rand(1..numbers) }.join
@@ -43,10 +44,6 @@ class Game
 
   def hint(secret)
     secret.shuffle!.pop
-  end
-
-  def calc_counts(difficulty)
-    DIFFICULTY_LEVEL[difficulty]
   end
 
   def check(number)
