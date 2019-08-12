@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../dependencies'
+
 class GameConsole
   include Validation
   include Database
@@ -16,7 +18,7 @@ class GameConsole
       start_info(@game.attempts, @game.hints)
       input = gets.chomp
       case input
-      when 'exit' then break close
+      when GameMenu::EXIT then break close
       when 'hint' then next hint_info(@game.use_hint)
       when /^[1-6]{4}/ then check_info(@game.check(input))
       else next puts I18n.t(:wrong_process) unless guess_is_valid?(input)
