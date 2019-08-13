@@ -18,7 +18,7 @@ RSpec.describe Game do
 
     it 'returns a message if no hints left' do
       game.instance_variable_set(:@hints, 0)
-      expect(game.use_hint).to eq('You have no hints')
+      expect(game.use_hint).to eq(I18n.t(:no_hints))
     end
   end
 end
