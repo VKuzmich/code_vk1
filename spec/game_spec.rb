@@ -4,17 +4,30 @@ require_relative '../dependencies'
 RSpec.describe Game do
   subject(:game) { described_class.new(name: 'Rspec', difficulty: :easy) }
 
-  # let(:game_class) { Class.new { extend Game } }
+  describe '.check_numbers' do
+    let(:examples) { YAML.load_file('spec/fixtures/examples.yml') }
 
-  # describe '.check_numbers' do
-  #   let(:examples) { YAML.load_file('spec/fixtures/examples.yml') }
-  #
-  #   it 'returns a correct answer' do
-  #     examples.each do |example|
-  #       expect(game.check_numbers(example[0].chars, example[1].chars)).to eq(example[2])
-  #     end
-  #   end
-  # end
+    it 'returns a correct answer' do
+      examples.each do |example|
+        expect(game.check_numbers(example[0].chars, example[1].chars)).to eq(example[2])
+      end
+    end
+  end
+
+  describe '.hint' do
+    let(:secret_code) { '1234' }
+    let(:unused_hints) { secret_code.chars }
+
+    it 'is included in secret code' do
+      expect(secret_code).to include(game.hint(unused_hints))
+    end
+#
+    it 'is shorter then before' do
+      old_length = unused_hints.length + 1
+      game.hint(unused_hints)
+      expect(unused_hints.length).to be < old_length
+    end
+  end
 
   describe '.check' do
     it 'returns ++++' do

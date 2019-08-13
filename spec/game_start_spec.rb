@@ -22,13 +22,13 @@
 #     it 'is included in secret code' do
 #       expect(secret_code).to include(game_class.hint(unused_hints))
 #     end
-#
+# #
 #     it 'is shorter then before' do
 #       old_length = unused_hints.length
 #       game_class.hint(unused_hints)
 #       expect(unused_hints.length).to be < old_length
 #     end
-#
+# #
 #     it 'is unique' do
 #       expect(unused_hints).not_to include(game_class.hint(unused_hints))
 #     end

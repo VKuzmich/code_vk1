@@ -27,8 +27,8 @@ class Game
   end
 
 
-  def make_number(chars = 4, numbers = 6)
-    (1..chars).map { rand(1..numbers) }.join
+  def make_number(numbers = 6)
+    (1..Validation::SECRET_CODE_LENGTH).map { rand(1..numbers) }.join
   end
 
   def check_numbers(secret, numbers)
