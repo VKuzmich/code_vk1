@@ -4,6 +4,18 @@ require_relative '../dependencies'
 RSpec.describe Game do
   subject(:game) { described_class.new(name: 'Rspec', difficulty: :easy) }
 
+  # let(:game_class) { Class.new { extend Game } }
+
+  # describe '.check_numbers' do
+  #   let(:examples) { YAML.load_file('spec/fixtures/examples.yml') }
+  #
+  #   it 'returns a correct answer' do
+  #     examples.each do |example|
+  #       expect(game.check_numbers(example[0].chars, example[1].chars)).to eq(example[2])
+  #     end
+  #   end
+  # end
+
   describe '.check' do
     it 'returns ++++' do
       expect(game.check(game.secret)).to eq('++++')

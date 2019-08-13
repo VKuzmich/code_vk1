@@ -6,7 +6,7 @@
 #   let(:game_class) { Class.new { extend GameStart } }
 #
 #   describe '.check_numbers' do
-#     let(:examples) { YAML.load_file('./spec/examples.yml') }
+#     let(:examples) { YAML.load_file('./spec/fixtures/examples.yml') }
 #
 #     it 'returns a correct answer' do
 #       examples.each do |example|

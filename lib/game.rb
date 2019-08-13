@@ -43,13 +43,13 @@ class Game
   end
 
   def hint(secret)
-    secret.shuffle!.pop
+    secret.shuffle.pop
   end
 
   def check(number)
     @attempts -= 1
     result = check_numbers(@secret.chars, number.chars)
-    @win = true if result == GOT_IT * Validation::NUMBERS
+    @win = true if result == GOT_IT * Validation::SECRET_CODE_LENGTH
     result
   end
 
