@@ -3,7 +3,7 @@ require_relative '../dependencies'
 
 RSpec.describe Database do
   let(:game_class) { Class.new { extend Database } }
-  let(:path) { 'seed.yaml' }
+  let(:path) { './spec/fixtures/seed.yaml' }
 
   let(:summary) do
     {
