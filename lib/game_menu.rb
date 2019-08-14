@@ -5,7 +5,6 @@ require_relative '../dependencies'
 class GameMenu
   extend Validation
   extend Database
-  # extend GameStart
 
   START = 'start'
   RULES = 'rules'
