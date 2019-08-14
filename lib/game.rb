@@ -31,13 +31,12 @@ class Game
   end
 
   def check_numbers(secret, numbers)
-    minuses = (secret & numbers).map { |element| [secret.count(element), numbers.count(element)].min }.sum
-    result = NOT_YET * minuses
-
-    numbers.each.with_index do |number, index|
-      result.sub!(NOT_YET, GOT_IT) if number == secret[index]
+    result = ''
+    secret.zip(numbers).each do |secret_element, number_element|
+      next unless secret.include? number_element
+      next result += GOT_IT if secret_element == number_element
+      result += NOT_YET
     end
-
     result
   end
 

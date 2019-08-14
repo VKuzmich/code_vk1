@@ -5,9 +5,10 @@ RSpec.describe Game do
   subject(:game) { described_class.new(name: 'Rspec', difficulty: :easy) }
 
   describe '.check_numbers' do
-    let(:examples) { YAML.load_file('spec/fixtures/examples.yml') }
+    let(:examples) { YAML.load_file('./spec/fixtures/examples.yml') }
 
     it 'returns a correct answer' do
+      binding.pry
       examples.each do |example|
         expect(game.check_numbers(example[0].chars, example[1].chars)).to eq(example[2])
       end
