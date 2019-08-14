@@ -26,14 +26,14 @@ RSpec.describe Validation do
     end
   end
 
-  describe '.guess_is_valid?' do
+  describe '.match_pattern??' do
     it 'returns true cause of correct data' do
-      expect(game_class.guess_is_valid?('1234')) == (true)
+      expect(game_class.match_pattern?('1234')) == (true)
     end
 
     it 'returns false cause of incorrect data' do
       %w[123 12345 0123 3210 1237].each do |incorrect_data|
-        expect(game_class.guess_is_valid?(incorrect_data)) == (false)
+        expect(game_class.match_pattern?(incorrect_data)) == (false)
       end
     end
   end

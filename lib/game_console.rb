@@ -23,7 +23,7 @@ class GameConsole
       when GameMenu::EXIT then break close
       when HINT then next hint_info(@game.use_hint)
       when /^[1-6]{4}/ then check_info(@game.check(input))
-      else next puts I18n.t(:wrong_process) unless guess_is_valid?(input)
+      else next puts I18n.t(:wrong_process) unless match_pattern?(input)
       end
     end
     puts I18n.t(:game_over)

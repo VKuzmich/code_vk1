@@ -9,7 +9,7 @@ module Validation
     name.is_a?(String) && name.length.between?(min, max)
   end
 
-  def guess_is_valid?(guess)
+  def match_pattern?(guess)
     /^[Game::RANGE_START - Game:RANGE_END]{Game::SECRET_CODE_LENGTH}$/.match(guess, Game::SECRET_CODE_LENGTH)
   end
 
