@@ -34,7 +34,7 @@ RSpec.describe GameConsole do
     end
 
     it 'shows a message' do
-      allow(game_console).to receive(:gets).and_return('wrong input')
+      allow(game_console).to receive(:gets).and_return(I18n.t(:wrong_input))
       expect(STDOUT).to receive(:puts).with(I18n.t(:wrong_process))
     end
 

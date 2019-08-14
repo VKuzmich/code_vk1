@@ -22,6 +22,7 @@ en:
   win: "Congratulations! You win!"
   lose: "Sorry, you lose. Maybe another time."
   wrong_difficulty: "There is no such difficulty. Please choose one from listed"
+  wrong_input: "wrong input"
   wrong_name: "Choosen name is invalid. Name must be between 3 and 20 characters.\nPlease choose another one"
   wrong_process: "There is no such command or your number is invalid. You can try use hint or exit"
   wrong_run: "You have passed unexpected command. Please choose one from listed commands"
