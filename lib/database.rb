@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Database
-  SEED = './spec/fixtures/seed.yaml'
+  SEED = 'database.yaml'
 
   def load(path = SEED)
     YAML.load_file(path)

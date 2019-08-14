@@ -101,7 +101,7 @@ RSpec.describe GameMenu do
 
     it 'shows a message' do
       allow(STDOUT).to receive(:puts).with(anything)
-      allow(described_class).to receive(:gets).and_return('wrong input')
+      allow(described_class).to receive(:gets).and_return(I18n.t(:wrong_input))
       expect(STDOUT).to receive(:puts).with(I18n.t(:wrong_difficulty))
       described_class.choose_difficulty
     end
