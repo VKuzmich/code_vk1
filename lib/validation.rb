@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module Validation
-  SECRET_CODE_LENGTH = 4
+  # SECRET_CODE_LENGTH = 4
+
   MIN_LETTERS = 3
   MAX_LETTERS = 20
 
@@ -10,6 +11,6 @@ module Validation
   end
 
   def guess_is_valid?(guess)
-    /^[1-6]{SECRET_CODE_LENGTH}$/.match(guess, SECRET_CODE_LENGTH)
+    /^[Game::RANGE_START - Game:RANGE_END]{Game::SECRET_CODE_LENGTH}$/.match(guess, Game::SECRET_CODE_LENGTH)
   end
 end

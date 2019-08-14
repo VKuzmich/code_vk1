@@ -3,9 +3,10 @@
 require_relative '../dependencies'
 
 class Game
-  # include GameStart
   include Validation
-
+  SECRET_CODE_LENGTH = 4
+  RANGE_START = 1
+  RANGE_END = 6
   NOT_YET = '-'
   GOT_IT = '+'
   DIFFICULTY_LEVEL = {
@@ -26,8 +27,8 @@ class Game
     @unused_hints = @secret.chars
   end
 
-  def make_number(numbers = 6)
-    (1..Validation::SECRET_CODE_LENGTH).map { rand(1..numbers) }.join
+  def make_number(numbers = RANGE_END)
+    (1..SECRET_CODE_LENGTH).map { rand(RANGE_START..numbers) }.join
   end
 
   def check_numbers(secret, numbers)
@@ -42,14 +43,11 @@ class Game
     result
   end
 
-  def hint(secret)
-    secret.shuffle.pop
-  end
 
   def check(number)
     @attempts -= 1
     result = check_numbers(@secret.chars, number.chars)
-    @win = true if result == GOT_IT * Validation::SECRET_CODE_LENGTH
+    @win = true if result == GOT_IT * SECRET_CODE_LENGTH
     result
   end
 
@@ -58,5 +56,10 @@ class Game
 
     @hints -= 1
     hint(@unused_hints)
+  end
+
+  # private
+  def hint(secret)
+    secret.shuffle.pop
   end
 end
