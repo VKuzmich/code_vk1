@@ -19,26 +19,20 @@ RSpec.describe Database do
   describe '#save' do
     context 'when file does not exist' do
       it 'saves a TableData object to a new file' do
+        random_file = 'random_file_name.yaml'
+        game_class.save(summary, random_file)
+        expect(File.exist?(random_file)).to eq(true)
+        File.delete(random_file)
       end
-    end
-
-    it 'saves a TableData object to a new file' do
-      random_file = 'random_file_name.yaml'
-      game_class.save(summary, random_file)
-      expect(File.exist?(random_file)).to eq(true)
-      File.delete(random_file)
     end
 
     context 'when file exists' do
-      it 'saves a TableData object to existing file' do
+      it 'saves a TableData object to exists file' do
+        old_size = File.new(path).size
+        game_class.save(summary, path)
+        new_size = File.new(path).size
+        expect(new_size).to be > old_size
       end
-    end
-
-    it 'saves a TableData object to exists file' do
-      old_size = File.new(path).size
-      game_class.save(summary, path)
-      new_size = File.new(path).size
-      expect(new_size).to be > old_size
     end
   end
 
