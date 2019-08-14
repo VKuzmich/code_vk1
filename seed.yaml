@@ -1,8 +1,0 @@
----
-- !ruby/object:TableData
-  name: wewewe
-  difficulty: :easy
-  attempts_total: 15
-  attempts_used: 11
-  hints_total: 3
-  hints_used: 3
