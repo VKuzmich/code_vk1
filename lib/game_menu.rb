@@ -53,6 +53,7 @@ class GameMenu
         input = gets.chomp
         break close if input == EXIT
         break input.to_sym if Game::DIFFICULTY_LEVEL.keys.include? input.to_sym
+
         puts I18n.t(:wrong_difficulty)
       end
     end

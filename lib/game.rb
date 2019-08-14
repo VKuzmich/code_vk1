@@ -9,9 +9,9 @@ class Game
   NOT_YET = '-'
   GOT_IT = '+'
   DIFFICULTY_LEVEL = {
-      easy: { attempts: 15, hints: 3 },
-      medium: { attempts: 10, hints: 2 },
-      hell: { attempts: 5, hints: 1 }
+    easy: { attempts: 15, hints: 3 },
+    medium: { attempts: 10, hints: 2 },
+    hell: { attempts: 5, hints: 1 }
   }.freeze
 
   attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
@@ -25,7 +25,6 @@ class Game
     @secret = make_number
     @unused_hints = @secret.chars
   end
-
 
   def make_number(numbers = 6)
     (1..Validation::SECRET_CODE_LENGTH).map { rand(1..numbers) }.join
