@@ -40,7 +40,7 @@ class GameMenu
         puts I18n.t(:choose_name)
         name = gets.chomp
         break close if name == EXIT
-        break name if name_is_valid?(name)
+        break name if valid_string_length?(name)
 
         puts I18n.t(:wrong_name)
       end
