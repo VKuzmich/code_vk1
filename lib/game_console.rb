@@ -21,21 +21,13 @@ class GameConsole
       input = gets.chomp
       case input
       when GameMenu::EXIT then break close
-      when HINT then next hint_info(@game.use_hint)
-      when /^[1-6]{4}/ then check_info(@game.check(input))
+      when HINT then next puts @game.use_hint
+      when /^[1-6]{4}/ then puts @game.check(input)
       else next puts I18n.t(:wrong_process) unless match_pattern?(input)
       end
     end
     puts I18n.t(:game_over)
     statistics
-  end
-
-  def check_info(check)
-    puts check
-  end
-
-  def hint_info(use_hint)
-    puts use_hint
   end
 
   def start_info(attempts, hints)
