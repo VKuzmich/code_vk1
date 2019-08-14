@@ -34,7 +34,9 @@ class Game
     result = ''
     secret.zip(numbers).each do |secret_element, number_element|
       next unless secret.include? number_element
+
       next result += GOT_IT if secret_element == number_element
+
       result += NOT_YET
     end
     result
