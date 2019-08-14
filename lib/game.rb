@@ -44,6 +44,17 @@ class Game
   end
 
 
+  # def check(number)
+  #   @attempts -= 1
+  #   result = check_numbers(@secret.chars, number.chars)
+  #
+  # end
+  #
+  # def win?
+  #   @win = true if result == GOT_IT * SECRET_CODE_LENGTH
+  #   result
+  # end
+
   def check(number)
     @attempts -= 1
     result = check_numbers(@secret.chars, number.chars)
