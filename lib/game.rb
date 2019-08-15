@@ -31,19 +31,6 @@ class Game
     (1..SECRET_CODE_LENGTH).map { rand(RANGE_START..numbers) }.join
   end
 
-  def check_numbers(secret, numbers)
-    result = ''
-    secret.zip(numbers).each do |secret_element, number_element|
-      next unless secret.include? number_element
-
-      next result += GOT_IT if secret_element == number_element
-
-      result += NOT_YET
-    end
-    result
-  end
-
-
   def check(number)
     @attempts -= 1
     result = check_numbers(@secret.chars, number.chars)
@@ -63,7 +50,20 @@ class Game
     hint(@unused_hints)
   end
 
-  # private
+  private
+
+  def check_numbers(secret, numbers)
+    result = ''
+    secret.zip(numbers).each do |secret_element, number_element|
+      next unless secret.include? number_element
+
+      next result += GOT_IT if secret_element == number_element
+
+      result += NOT_YET
+    end
+    result
+  end
+
   def hint(secret)
     secret.shuffle.pop
   end

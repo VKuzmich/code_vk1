@@ -16,6 +16,7 @@ class GameConsole
   def start
     loop do
       break if @game.attempts.zero? || @game.win
+
       start_info(@game.attempts, @game.hints)
       input = gets.chomp
       case input
