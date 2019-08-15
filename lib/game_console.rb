@@ -49,20 +49,6 @@ class GameConsole
     puts I18n.t(:secret, secret: secret)
   end
 
-  def save_results
-    attempts_total = Game::DIFFICULTY_LEVEL[@game.difficulty][:attempts]
-    hints_total = Game::DIFFICULTY_LEVEL[@game.difficulty][:hints]
-    summary = {
-      name: @game.name,
-      difficulty: @game.difficulty,
-      attempts_total: attempts_total,
-      attempts_used: attempts_total - @game.attempts,
-      hints_total: hints_total,
-      hints_used: hints_total - @game.hints
-    }
-    save(summary)
-  end
-
   def close
     puts I18n.t(:goodbye)
     exit

@@ -1728,3 +1728,10 @@
   attempts_used: 6
   hints_total: 3
   hints_used: 3
+- !ruby/object:TableData
+  name: ret
+  difficulty: :easy
+  attempts_total: 15
+  attempts_used: 5
+  hints_total: 3
+  hints_used: 3
