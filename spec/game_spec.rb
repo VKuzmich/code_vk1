@@ -9,7 +9,7 @@ RSpec.describe Game do
 
     it 'returns a correct answer' do
       examples.each do |example|
-        expect(game.check_numbers(example[0].chars, example[1].chars)).==(example[2])
+        expect(game.check_numbers(example[0].chars, example[1].chars)).to eq(example[2])
       end
     end
   end
