@@ -50,7 +50,7 @@ class Game
     hint(@unused_hints)
   end
 
-  # private
+  private
 
   def check_numbers(secret, numbers)
     result = ''

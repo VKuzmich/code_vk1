@@ -9,6 +9,10 @@ SimpleCov.start do
 end
 
 RSpec.configure do |config|
+  config.before(:each) do
+    described_class.send(:public, *described_class.protected_instance_methods)
+    described_class.send(:public, *described_class.private_instance_methods)
+  end
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
