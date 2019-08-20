@@ -5,6 +5,7 @@ require_relative '../dependencies'
 class GameMenu
   extend Validation
   extend Database
+  include Output
 
   START = 'start'
   RULES = 'rules'
@@ -55,10 +56,6 @@ class GameMenu
 
         puts I18n.t(:wrong_difficulty)
       end
-    end
-
-    def rules
-      puts I18n.t(:rules)
     end
 
     def stats

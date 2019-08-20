@@ -5,6 +5,7 @@ require_relative '../dependencies'
 class GameConsole
   include Validation
   include Database
+  include Output
 
   HINT = 'hint'
   SAVE = 'save'
@@ -31,10 +32,6 @@ class GameConsole
     statistics
   end
 
-  def start_info(attempts, hints)
-    puts I18n.t(:game_process, attempts: attempts, hints: hints)
-  end
-
   def statistics
     summary_info(@game.secret)
     if @game.win
@@ -44,10 +41,6 @@ class GameConsole
     else
       puts I18n.t(:lose)
     end
-  end
-
-  def summary_info(secret)
-    puts I18n.t(:secret, secret: secret)
   end
 
   def close
