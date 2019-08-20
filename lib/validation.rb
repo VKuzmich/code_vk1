@@ -9,6 +9,6 @@ module Validation
   end
 
   def match_pattern?(guess)
-    /^[Game::RANGE_START - Game:RANGE_END]{Game::SECRET_CODE_LENGTH}$/.match(guess, Game::SECRET_CODE_LENGTH)
+    GameConsole::INPUT_DATA.match(guess, Game::SECRET_CODE_LENGTH)
   end
 end

@@ -8,6 +8,7 @@ class GameConsole
 
   HINT = 'hint'
   SAVE = 'save'
+  INPUT_DATA = /^[1-6]{4}$/
 
   def initialize(name, difficulty)
     @game = Game.new(name: name, difficulty: difficulty)
@@ -22,8 +23,8 @@ class GameConsole
       case input
       when GameMenu::EXIT then break close
       when HINT then next puts @game.use_hint
-      when /^[1-6]{4}/ then puts @game.check(input)
-      else next puts I18n.t(:wrong_process) unless match_pattern?(input)
+      when INPUT_DATA then puts @game.check(input)
+      else puts I18n.t(:wrong_process)
       end
     end
     puts I18n.t(:game_over)
@@ -38,7 +39,7 @@ class GameConsole
     summary_info(@game.secret)
     if @game.win
       puts I18n.t(:win)
-      print I18n.t(:save)
+      puts I18n.t(:save)
       save_results if gets.chomp == SAVE
     else
       puts I18n.t(:lose)
