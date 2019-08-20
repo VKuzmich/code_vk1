@@ -4,6 +4,7 @@ require_relative '../dependencies'
 RSpec.describe Database do
   let(:game_class) { Class.new { extend Database } }
   let(:path) { './spec/fixtures/seed.yaml' }
+  let(:random_file) { 'random_file_name.yaml' }
 
   let(:summary) do
     {
@@ -19,7 +20,6 @@ RSpec.describe Database do
   describe '#save' do
     context 'when file does not exist' do
       it 'saves a TableData object to a new file' do
-        random_file = 'random_file_name.yaml'
         game_class.save(summary, random_file)
         expect(File.exist?(random_file)).to eq(true)
         File.delete(random_file)
