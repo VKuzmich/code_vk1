@@ -3,6 +3,7 @@ require_relative '../dependencies'
 
 RSpec.describe GameMenu do
   describe '.welcome' do
+
     after do
       described_class.welcome
     end

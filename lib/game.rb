@@ -4,6 +4,7 @@ require_relative '../dependencies'
 
 class Game
   include Validation
+  include Output
   SECRET_CODE_LENGTH = 4
   RANGE_START = 1
   RANGE_END = 6
