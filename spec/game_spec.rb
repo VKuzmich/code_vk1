@@ -20,13 +20,14 @@ RSpec.describe Game do
     let(:unused_hints) { secret_code.chars }
 
     it 'is included in secret code' do
-      expect(secret_code).to include(game.hint(unused_hints))
+      result = game.send(:hint, secret_code)
+      expect(result).to include(game.hint(unused_hints))
     end
-#
+
     it 'is shorter then before' do
       old_length = unused_hints.length + 1
-      game.hint(unused_hints)
-      expect(unused_hints.length).to be < old_length
+      result = game.send(:hint, unused_hints)
+      expect(result.length).to be < old_length
     end
   end
 
