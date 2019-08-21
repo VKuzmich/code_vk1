@@ -16,13 +16,13 @@ RSpec.describe Game do
   end
 
   describe '.hint' do
-    let(:secret_code) { '1234' }
-    let(:unused_hints) { secret_code.chars }
+    before do
+      allow(game).to receive(:hint)
+    end
 
-    it 'is shorter then before' do
-      old_length = unused_hints.length
-      result = game.send(:hint, unused_hints)
-      expect(result.length).to be < old_length
+    it 'calls `use_hint`' do
+      game.use_hint
+      expect(game).to have_received(:hint)
     end
   end
 
@@ -33,6 +33,7 @@ RSpec.describe Game do
   end
 
   describe '#use_hint' do
+
     it 'decrements hints and calls a hint method if hints > 0' do
       game.instance_variable_set(:@hints, 1)
       expect { game.use_hint }.to change(game, :hints).by(-1)
