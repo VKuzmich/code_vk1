@@ -3,7 +3,6 @@
 require_relative '../dependencies'
 
 class Game
-  include Validation
   include Output
   SECRET_CODE_LENGTH = 4
   RANGE_START = 1
@@ -53,17 +52,39 @@ class Game
 
   private
 
+  # def check_numbers(secret, numbers)
+  #   result = ''
+  #   secret.zip(numbers).each do |secret_element, number_element|
+  #     next unless secret.include? number_element
+  #
+  #     next result += GOT_IT if secret_element == number_element
+  #
+  #     result += NOT_YET
+  #   end
+  #   result
+  # end
+
   def check_numbers(secret, numbers)
-    result = ''
-    secret.zip(numbers).each do |secret_element, number_element|
+    exact_matches, non_exact_matches = secret.zip(numbers).partition do |secret_number, input_number|
+      secret_number == input_number
+    end
+
+    result = Array.new(exact_matches.count, GOT_IT)
+
+    find_non_exact_matches(result, non_exact_matches) if non_exact_matches.any?
+
+    result.join
+  end
+
+  def find_non_exact_matches(result, non_exact_matches)
+    secret, numbers = non_exact_matches.transpose
+    numbers.each do |number_element|
       next unless secret.include? number_element
 
-      next result += GOT_IT if secret_element == number_element
-
-      result += NOT_YET
+      result.push(NOT_YET) && secret.delete_at(secret.index(number_element))
     end
-    result
   end
+
 
   def hint(secret)
     secret.shuffle.pop
