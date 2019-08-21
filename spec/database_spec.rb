@@ -28,10 +28,6 @@ RSpec.describe Database do
 
     context 'when file exists' do
       it 'saves a TableData object to exists file' do
-        # old_size = File.new(path).size
-        # game_class.save(summary, path)
-        # new_size = File.new(path).size
-        # expect(new_size).to be > old_size
         expect { game_class.save(summary, path) }.to change { File.new(path).size }
       end
     end
