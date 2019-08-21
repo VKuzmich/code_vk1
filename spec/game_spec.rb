@@ -35,7 +35,7 @@ RSpec.describe Game do
 
   describe '.check' do
     it 'returns ++++' do
-      expect(game.check(game.secret)).to eq('++++')
+      expect(game.check(game.secret)).to eq(Game::GOT_IT * 4)
     end
   end
 
