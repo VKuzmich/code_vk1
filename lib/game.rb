@@ -33,14 +33,13 @@ class Game
 
   def check(number)
     @attempts -= 1
-    result = check_numbers(@secret.chars, number.chars)
-    win?(result)
+    win = check_numbers(@secret.chars, number.chars)
+    win?(win)
   end
 
-  def win?(result)
-    @result = result
-    @win = true if @result == GOT_IT * SECRET_CODE_LENGTH
-    result
+  def win?(win)
+    @win = true if win == GOT_IT * SECRET_CODE_LENGTH
+    win
   end
 
   def use_hint
@@ -50,7 +49,7 @@ class Game
     hint(@unused_hints)
   end
 
-  private
+  # private
 
   # def check_numbers(secret, numbers)
   #   result = ''
