@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Output
-
   def start_info(attempts, hints)
     puts I18n.t(:game_process, attempts: attempts, hints: hints)
   end
@@ -13,6 +12,4 @@ module Output
   def rules
     puts I18n.t(:rules)
   end
-
-
 end

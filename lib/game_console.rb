@@ -9,7 +9,7 @@ class GameConsole
 
   HINT = 'hint'
   SAVE = 'save'
-  INPUT_DATA = /^[1-6]{4}$/
+  INPUT_DATA = /^[1-6]{4}$/.freeze
 
   def initialize(name, difficulty)
     @game = Game.new(name: name, difficulty: difficulty)

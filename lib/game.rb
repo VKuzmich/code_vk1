@@ -49,19 +49,7 @@ class Game
     hint(@unused_hints)
   end
 
-  # private
-
-  # def check_numbers(secret, numbers)
-  #   result = ''
-  #   secret.zip(numbers).each do |secret_element, number_element|
-  #     next unless secret.include? number_element
-  #
-  #     next result += GOT_IT if secret_element == number_element
-  #
-  #     result += NOT_YET
-  #   end
-  #   result
-  # end
+  private
 
   def check_numbers(secret, numbers)
     exact_matches, non_exact_matches = secret.zip(numbers).partition do |secret_number, input_number|
@@ -83,7 +71,6 @@ class Game
       result.push(NOT_YET) && secret.delete_at(secret.index(number_element))
     end
   end
-
 
   def hint(secret)
     secret.shuffle.pop
