@@ -34,6 +34,10 @@ class GameConsole
 
   def statistics
     summary_info(@game.secret)
+    end_game
+  end
+
+  def end_game
     if @game.win
       puts I18n.t(:win)
       puts I18n.t(:save)
