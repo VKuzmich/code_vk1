@@ -15,17 +15,6 @@ RSpec.describe Game do
     end
   end
 
-  describe '.hint' do
-    before do
-      allow(game).to receive(:hint)
-    end
-
-    it 'calls `use_hint`' do
-      game.use_hint
-      expect(game).to have_received(:hint)
-    end
-  end
-
   describe '.check' do
     it 'returns ++++' do
       expect(game.check(game.secret)).to eq(Game::GOT_IT * 4)
@@ -33,7 +22,6 @@ RSpec.describe Game do
   end
 
   describe '#use_hint' do
-
     it 'decrements hints and calls a hint method if hints > 0' do
       game.instance_variable_set(:@hints, 1)
       expect { game.use_hint }.to change(game, :hints).by(-1)
