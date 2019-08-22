@@ -5,13 +5,13 @@ RSpec.describe Game do
   subject(:game) { described_class.new(name: 'Rspec', difficulty: :easy) }
 
   describe '.check' do
-    it 'returns ++++' do
+    it 'returns true when #check_numbers equal secret' do
       expect(game.check(game.secret)).to eq(Game::GOT_IT * 4)
     end
   end
 
   describe '#use_hint' do
-    it 'decrements hints and calls a hint method if hints > 0' do
+    it 'decrements hints and calls a #hint' do
       game.instance_variable_set(:@hints, 1)
       expect { game.use_hint }.to change(game, :hints).by(-1)
     end
