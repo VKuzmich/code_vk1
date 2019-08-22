@@ -63,7 +63,7 @@ RSpec.describe GameMenu do
 
   describe '.stats' do
     it 'shows a stats' do
-      expect(described_class).to receive(:puts)
+      expect(described_class).to receive(:puts).with(I18n.t(:no_stats))
       described_class.stats
     end
   end
@@ -108,7 +108,7 @@ RSpec.describe GameMenu do
     end
 
     it 'returns a correct difficulty level' do
-      Game::DIFFICULTY_LEVEL.keys.each do |key|
+      Game::DIFFICULTY_LEVEL.each_key do |key|
         allow(described_class).to receive(:gets).and_return(key.to_s)
         expect(described_class.choose_difficulty).to eq(key)
       end
