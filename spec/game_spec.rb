@@ -4,6 +4,7 @@ require_relative '../dependencies'
 RSpec.describe Game do
   subject(:game) { described_class.new(name: 'Rspec', difficulty: :easy) }
 
+  let(:examples) { YAML.load_file('spec/fixtures/examples.yml') }
   let(:guess_plus) { Game::GOT_IT }
   let(:guess_minus) { Game::NOT_YET }
 
@@ -22,6 +23,17 @@ RSpec.describe Game do
   describe '#check' do
     it 'returns true when #check_numbers equal secret' do
       expect(game.check(game.secret)).to eq(Game::GOT_IT * 4)
+    end
+  end
+
+  describe '#check "1234" ' do
+    before { game.instance_variable_set(:@secret, '1111') }
+
+    it 'returns a correct answer' do
+      examples.each do |example|
+        result = game.send(:check_numbers, example[0].chars, example[1].chars)
+        expect(result).to eq(example[2])
+      end
     end
   end
 
