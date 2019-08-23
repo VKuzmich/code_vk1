@@ -22,7 +22,6 @@ class Game
     @difficulty = difficulty
     @attempts = DIFFICULTY_LEVEL[difficulty][:attempts]
     @hints = DIFFICULTY_LEVEL[difficulty][:hints]
-    @win = false
     @secret = make_number
     @unused_hints = @secret.chars
   end
@@ -33,13 +32,11 @@ class Game
 
   def check(number)
     @attempts -= 1
-    win = check_numbers(@secret.chars, number.chars)
-    win?(win)
+    @last_result = check_numbers(@secret.chars, number.chars)
   end
 
-  def win?(win)
-    @win = true if win == GOT_IT * SECRET_CODE_LENGTH
-    win
+  def win?
+    @last_result == GOT_IT * SECRET_CODE_LENGTH
   end
 
   def use_hint

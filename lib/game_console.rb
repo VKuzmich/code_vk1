@@ -17,7 +17,7 @@ class GameConsole
 
   def start
     loop do
-      break if @game.attempts.zero? || @game.win
+      break if @game.attempts.zero? || @game.win?
 
       start_info(@game.attempts, @game.hints)
       input = gets.chomp
@@ -38,7 +38,7 @@ class GameConsole
   end
 
   def end_game
-    if @game.win
+    if @game.win?
       puts I18n.t(:win)
       puts I18n.t(:save)
       save_results if gets.chomp == SAVE
