@@ -26,18 +26,15 @@ RSpec.describe Game do
     end
   end
 
-  describe '#check "1111" ' do
-    before { game.instance_variable_set(:@secret, '1111') }
-
-    it 'returns a correct answer' do
-      secret = '1111'
-      numbers = '1122'
+  describe 'the correct answer to guessing numbers' do
       examples.each do |example|
-        result = game.send(:check_numbers, example[0] = secret.chars, example[1] = numbers.chars)
-        expect(result).to eq(example[2])
+        it "checks that the result is #{example[2]} when code is #{example[0]}, numbers are #{example[1]}" do
+          game.instance_variable_set(:@secret, example[0])
+          numbers = example[1]
+          expect(game.check(numbers)).to eq(example[2])
+        end
       end
     end
-  end
 
   describe '#check "1234" ' do
     before { game.instance_variable_set(:@secret, '1234') }

@@ -15,7 +15,7 @@ class Game
     hell: { attempts: 5, hints: 1 }
   }.freeze
 
-  attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :win, :secret
+  attr_accessor :attempts_total, :attempts, :difficulty, :hints_total, :hints, :name, :secret
 
   def initialize(name:, difficulty:)
     @name = name
