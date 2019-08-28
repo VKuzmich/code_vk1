@@ -4,8 +4,6 @@ require_relative '../dependencies'
 RSpec.describe GameConsole do
   let(:game_console) { described_class.new('Rspec', :easy) }
 
-  let(:game_double_with_zeros) { instance_double('Game', attempts: 0, hints: 0) }
-
   before do
     allow(STDOUT).to receive(:puts).with(anything)
   end
@@ -56,37 +54,6 @@ RSpec.describe GameConsole do
       expect(game_console).to receive(:exit)
       game_console.close
     end
-  end
-
-  describe '#statistics' do
-    after do
-      game_console.statistics
-    end
-
-    it 'shows a lose message' do
-      game_console.instance_variable_get(:@game).instance_variable_set(:@win, false)
-      expect(STDOUT).to receive(:puts).with(I18n.t(:lose))
-    end
-
-    # it 'shows win message' do
-    #   #
-    #   # # game_console.instance_variable_set(:@game, game_double_with_zeros)
-    #   # allow(game_console.instance_variable_get(:@game)).to receive(:win?)
-    #   allow(game_console).to receive(:gets).and_return("no\n")
-    #   expect(STDOUT).to receive(:puts).with(I18n.t(:win))
-    # end
-
-    # it 'shows a win message' do
-    #   game_console.instance_variable_get(:@game).instance_variable_set(:@win, true)
-    #   allow(game_console).to receive(:gets).and_return("no\n")
-    #   expect(STDOUT).to receive(:puts).with(I18n.t(:win))
-    # end
-    #
-    # it 'calls save_results method' do
-    #   game_console.instance_variable_get(:@game).instance_variable_set(:@win, true)
-    #   allow(game_console).to receive(:gets).and_return(GameConsole::SAVE)
-    #   expect(game_console).to receive(:save_results)
-    # end
   end
 
   describe '.save_results' do
