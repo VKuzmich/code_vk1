@@ -5,3 +5,4 @@
 coverageseed.yml
 spec/fixtures/seed.yaml
 database.yaml
+tmp
