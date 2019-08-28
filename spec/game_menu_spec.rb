@@ -19,9 +19,12 @@ RSpec.describe GameMenu do
   end
 
   describe '.run' do
-
     before do
       allow(described_class).to receive(:loop).and_yield
+      allow(described_class).to receive(:gets).and_return(GameMenu::START)
+      allow(described_class).to receive(:gets).and_return(GameMenu::RULES)
+      allow(described_class).to receive(:gets).and_return(GameMenu::STATISTICS)
+      allow(described_class).to receive(:gets).and_return(GameMenu::EXIT)
     end
 
     after do
@@ -29,22 +32,18 @@ RSpec.describe GameMenu do
     end
 
     it 'calls registration method' do
-      allow(described_class).to receive(:gets).and_return(GameMenu::START)
       expect(described_class).to receive(:registration)
     end
 
     it 'calls rules method' do
-      allow(described_class).to receive(:gets).and_return(GameMenu::RULES)
       expect(described_class).to receive(:rules)
     end
 
     it 'calls stats method' do
-      allow(described_class).to receive(:gets).and_return(GameMenu::STATISTICS)
       expect(described_class).to receive(:stats)
     end
 
     it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return(GameMenu::EXIT)
       expect(described_class).to receive(:close)
     end
 
@@ -69,11 +68,6 @@ RSpec.describe GameMenu do
   end
 
   describe '.close' do
-    it 'says goodbye' do
-      allow(described_class).to receive(:exit)
-      expect { described_class.close }.to output(I18n.t(:goodbye)).to_stdout
-    end
-
     it 'closes' do
       expect(described_class).to receive(:exit)
       described_class.close
@@ -118,12 +112,6 @@ RSpec.describe GameMenu do
   describe '.choose_name' do
     before do
       allow(described_class).to receive(:loop).and_yield
-    end
-
-    it 'calls close method' do
-      allow(described_class).to receive(:gets).and_return(GameMenu::EXIT)
-      expect(described_class).to receive(:close)
-      described_class.choose_name
     end
 
     it 'shows a message' do

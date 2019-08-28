@@ -13,3 +13,4 @@ gem 'rspec', '~> 3.8'
 gem 'rspec_fixtures'
 gem 'rubocop', '~> 0.70.0', require: false
 gem 'simplecov', '~> 0.16.1'
+gem "rubycritic", require: false

@@ -17,11 +17,6 @@ RSpec.describe GameConsole do
       game_console.start
     end
 
-    it 'calls close method' do
-      allow(game_console).to receive(:gets).and_return(GameMenu::EXIT)
-      expect(game_console).to receive(:close)
-    end
-
     it 'shows a Game Over text' do
       allow(game_console).to receive(:statistics)
       game_console.instance_variable_get(:@game).instance_variable_set(:@attempts, 0)
@@ -57,6 +52,10 @@ RSpec.describe GameConsole do
   end
 
   describe '#statistics' do
+    before do
+      allow(game_console.instance_variable_get(:@game)).to receive(:win?).and_return(true)
+    end
+
     after do
       game_console.statistics
     end
@@ -67,13 +66,11 @@ RSpec.describe GameConsole do
     end
 
     it 'shows a win message' do
-      allow(game_console.instance_variable_get(:@game)).to receive(:win?).and_return(true)
       allow(game_console).to receive(:gets).and_return("no\n")
       expect(STDOUT).to receive(:puts).with(I18n.t(:win))
     end
 
     it 'calls save_results method' do
-      allow(game_console.instance_variable_get(:@game)).to receive(:win?).and_return(true)
       allow(game_console).to receive(:gets).and_return(GameConsole::SAVE)
       expect(game_console).to receive(:save_results)
     end
