@@ -5,7 +5,6 @@ RSpec.describe Database do
   let(:game_class) { Class.new { extend Database } }
   let(:path) { './spec/fixtures/seed.yaml' }
   let(:random_file) { 'random_file_name.yaml' }
-
   let(:summary) do
     {
         name: 'Rspec',

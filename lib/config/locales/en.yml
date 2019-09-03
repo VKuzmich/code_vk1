@@ -36,3 +36,6 @@ en:
   game_over: 'Game Over'
   stats: "Player %{name} played with difficulty level %{difficulty} (%{attempts_total} attempts, %{hints_total} hints) and won with %{attempts_used} attempts and %{hints_used} hints used."
   no_stats: "Sorry, you have not any saves yet."
+#  stats_user_info: "%{position}) Name: %{name} difficulty: %{difficulty}\n"
+#  stats_lefts: "Attempts: %{attempts_used}/%{attempts_total} Hints: %{hints_used}/%{hints_total}"
+

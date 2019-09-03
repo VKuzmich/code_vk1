@@ -12,5 +12,5 @@ gem 'pry', '~> 0.12.2'
 gem 'rspec', '~> 3.8'
 gem 'rspec_fixtures'
 gem 'rubocop', '~> 0.70.0', require: false
+gem 'rubycritic', require: false
 gem 'simplecov', '~> 0.16.1'
-gem "rubycritic", require: false
