@@ -1,0 +1,27 @@
+AllCops:
+  Exclude:
+  - 'spec/**/*'
+  - 'bin/*'
+  - '*.gemspec'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ParameterLists:
+  Max: 7
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false

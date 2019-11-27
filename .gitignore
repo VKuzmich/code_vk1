@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea/
+/bin/
+/coverage/
+coverageseed.yml
+spec/fixtures/seed.yaml
+database.yaml
+tmp
